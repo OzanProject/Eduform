@@ -6,11 +6,10 @@ use App\Models\Form;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class FormResponsesExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize, WithStyles
+class FormResponsesExport implements FromCollection, WithHeadings, WithMapping, WithStyles
 {
     protected $form;
 
@@ -61,6 +60,10 @@ class FormResponsesExport implements FromCollection, WithHeadings, WithMapping, 
         // Setup kertas F4 (Folio) Landscape
         $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
         $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_FOLIO);
+        
+        // Fit ke lebar halaman supaya tidak terpotong
+        $sheet->getPageSetup()->setFitToWidth(1);
+        $sheet->getPageSetup()->setFitToHeight(0);
 
         $highestRow = $sheet->getHighestRow();
         $highestColumn = $sheet->getHighestColumn();
@@ -68,6 +71,15 @@ class FormResponsesExport implements FromCollection, WithHeadings, WithMapping, 
         // Mencegah tulisan nabrak (Wrap Text)
         $sheet->getStyle('A1:' . $highestColumn . $highestRow)->getAlignment()->setWrapText(true);
         $sheet->getStyle('A1:' . $highestColumn . $highestRow)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+
+        // Atur lebar kolom statis supaya rapi
+        $sheet->getColumnDimension('A')->setWidth(20); // Waktu Submit
+        
+        $highestColIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
+        for ($col = 2; $col <= $highestColIndex; $col++) {
+            $colString = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::stringFromColumnIndex($col);
+            $sheet->getColumnDimension($colString)->setWidth(35); // Lebar proporsional untuk jawaban
+        }
 
         return [
             1 => ['font' => ['bold' => true]],
