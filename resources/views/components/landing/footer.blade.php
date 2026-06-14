@@ -8,7 +8,7 @@
             </div>
             <span class="font-heading font-semibold text-slate-800">{{ $brandName }}</span>
         </div>
-        <p class="text-sm text-slate-500">
+        <p class="text-sm text-slate-500 text-center sm:text-right">
             &copy; {{ date('Y') }} {{ $fullBrandName }}. All rights reserved.<br>
             <span class="mt-1 inline-block">Development by <a href="https://ozanproject.site" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-500 hover:text-blue-600 hover:underline transition-colors">Ozan Project</a></span>
         </p>
