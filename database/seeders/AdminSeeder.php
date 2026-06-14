@@ -12,10 +12,11 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory()->create([
+        \App\Models\User::create([
             'name' => 'Admin EduForm',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password'),
+            'email_verified_at' => now(),
         ]);
     }
 }
