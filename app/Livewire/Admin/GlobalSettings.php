@@ -39,7 +39,7 @@ class GlobalSettings extends Component
         $this->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . auth()->id(),
-            'brandLogo' => 'nullable|image|max:2048', // max 2MB
+            'brandLogo' => 'nullable|image', // Tanpa batasan ukuran dari sisi aplikasi
             'brandName' => 'required|string|max:50',
             'brandSubtitle' => 'nullable|string|max:50',
         ]);
