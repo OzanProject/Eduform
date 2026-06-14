@@ -234,7 +234,7 @@ class FormBuilder extends Component
                 $q->options()->delete();
                 foreach ($qData['options'] as $optIndex => $optValue) {
                     $q->options()->create([
-                        'value' => $optValue,
+                        'text' => $optValue,
                         'order' => $optIndex + 1,
                     ]);
                 }
