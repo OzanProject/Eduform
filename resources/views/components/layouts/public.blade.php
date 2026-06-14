@@ -14,6 +14,26 @@
     @endif
     <title>{{ isset($title) ? $title . ' - ' . $fullBrandName : $fullBrandName }}</title>
     
+    <meta name="description" content="{{ isset($description) ? $description : 'Formulir online dan survei dari ' . $fullBrandName }}">
+    <meta name="theme-color" content="#3b82f6">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ isset($title) ? $title : $fullBrandName }}">
+    <meta property="og:description" content="{{ isset($description) ? $description : 'Isi formulir online ini dengan mudah melalui perangkat apa saja.' }}">
+    @if($brandLogoPath)
+        <meta property="og:image" content="{{ asset('storage/' . $brandLogoPath) }}">
+    @endif
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ isset($title) ? $title : $fullBrandName }}">
+    <meta property="twitter:description" content="{{ isset($description) ? $description : 'Isi formulir online ini dengan mudah melalui perangkat apa saja.' }}">
+    @if($brandLogoPath)
+        <meta property="twitter:image" content="{{ asset('storage/' . $brandLogoPath) }}">
+    @endif
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

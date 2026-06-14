@@ -5,10 +5,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $fullBrandName }} - Modern Form Builder</title>
+    <meta name="description" content="Platform terbaik untuk mengumpulkan data, survei, dan evaluasi menggunakan {{ $fullBrandName }}.">
+    <meta name="keywords" content="form builder, online forms, survei online, {{ $fullBrandName }}, Ozan Project">
+    <meta name="author" content="Ozan Project">
+    <meta name="theme-color" content="#3b82f6">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="{{ $fullBrandName }} - Modern Form Builder">
+    <meta property="og:description" content="Platform terbaik untuk mengumpulkan data, survei, dan evaluasi. Responsif, interaktif, dan dirancang khusus untuk kenyamanan Anda.">
     @if($brandLogoPath)
+        <meta property="og:image" content="{{ asset('storage/' . $brandLogoPath) }}">
         <link rel="icon" href="{{ asset('storage/' . $brandLogoPath) }}" type="image/png">
     @endif
-    
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="{{ $fullBrandName }} - Modern Form Builder">
+    <meta property="twitter:description" content="Platform terbaik untuk mengumpulkan data, survei, dan evaluasi. Responsif, interaktif, dan dirancang khusus untuk kenyamanan Anda.">
+    @if($brandLogoPath)
+        <meta property="twitter:image" content="{{ asset('storage/' . $brandLogoPath) }}">
+    @endif
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

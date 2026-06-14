@@ -7,7 +7,6 @@ use Livewire\Attributes\Layout;
 use Livewire\WithFileUploads;
 use App\Models\Form;
 
-#[Layout('components.layouts.public')]
 class FormShow extends Component
 {
     use WithFileUploads;
@@ -117,6 +116,10 @@ class FormShow extends Component
 
     public function render()
     {
-        return view('livewire.public.form-show')->title($this->form->title ?? 'Formulir');
+        return view('livewire.public.form-show')
+            ->layout('components.layouts.public', [
+                'title' => $this->form->title ?? null,
+                'description' => $this->form->description ?? null,
+            ]);
     }
 }
