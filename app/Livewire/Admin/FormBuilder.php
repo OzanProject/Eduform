@@ -60,7 +60,7 @@ class FormBuilder extends Component
                     'label' => $q->text,
                     'description' => $q->description,
                     'is_required' => $q->is_required,
-                    'options' => $q->options->pluck('value')->toArray(),
+                    'options' => $q->options->pluck('text')->toArray(),
                     'order' => $q->order,
                 ];
             }

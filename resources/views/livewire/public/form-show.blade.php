@@ -76,7 +76,7 @@
             
             @elseif($q->type === 'radio')
               <div class="space-y-4 mt-2">
-                @foreach($q->options->pluck('value') as $opt)
+                @foreach($q->options->pluck('text') as $opt)
                   <label class="flex items-start gap-4 cursor-pointer group p-2 -ml-2 rounded-lg hover:bg-slate-50 transition-colors">
                     <div class="flex items-center h-6">
                       <input 
@@ -94,7 +94,7 @@
             
             @elseif($q->type === 'checkbox')
               <div class="space-y-4 mt-2">
-                @foreach($q->options->pluck('value') as $opt)
+                @foreach($q->options->pluck('text') as $opt)
                   <label class="flex items-start gap-4 cursor-pointer group p-2 -ml-2 rounded-lg hover:bg-slate-50 transition-colors">
                     <div class="flex items-center h-6">
                       <input 
@@ -115,7 +115,7 @@
                 class="w-full border border-slate-300 rounded-lg bg-white px-4 py-3 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all text-slate-800 mt-1"
               >
                 <option value="">-- Pilih Jawaban --</option>
-                @foreach($q->options->pluck('value') as $opt)
+                @foreach($q->options->pluck('text') as $opt)
                   <option value="{{ $opt }}">{{ $opt }}</option>
                 @endforeach
               </select>
