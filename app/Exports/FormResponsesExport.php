@@ -58,6 +58,17 @@ class FormResponsesExport implements FromCollection, WithHeadings, WithMapping, 
 
     public function styles(Worksheet $sheet)
     {
+        // Setup kertas F4 (Folio) Landscape
+        $sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+        $sheet->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_FOLIO);
+
+        $highestRow = $sheet->getHighestRow();
+        $highestColumn = $sheet->getHighestColumn();
+
+        // Mencegah tulisan nabrak (Wrap Text)
+        $sheet->getStyle('A1:' . $highestColumn . $highestRow)->getAlignment()->setWrapText(true);
+        $sheet->getStyle('A1:' . $highestColumn . $highestRow)->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+
         return [
             1 => ['font' => ['bold' => true]],
         ];
